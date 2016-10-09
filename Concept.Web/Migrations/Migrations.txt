@@ -1,0 +1,1 @@
+enable-migrations -ContextProjectName Concept.Dal -StartUpProjectName Concept.Web -ContextTypeName Concept.Dal.EF.ConceptContext -ProjectName Concept.Dal

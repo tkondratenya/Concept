@@ -14,6 +14,8 @@ namespace Concept.Bll.AutoMapper
         public EntityToDTOMappingProfile()
         {
             CreateMap<Resource, ResourceDTO>().ReverseMap();
+            CreateMap<ResourceCost, ResourceCostDTO>().ReverseMap();
+            CreateMap<Cost, CostDTO>().ReverseMap();
         }
     }
 }

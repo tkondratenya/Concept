@@ -13,6 +13,8 @@ namespace Concept.Dal.Repositories
     {
         private ConceptContext db;
         private ResourceRepository resourceRepository;
+        private ResourceCostRepository resourceCostRepository;
+        private CostRepository costRepository;
 
         public EFUnitOfWork(string connectionString)
         {
@@ -29,6 +31,26 @@ namespace Concept.Dal.Repositories
             }
         }
 
+        public IRepository<ResourceCost> ResourceCosts
+        {
+            get
+            {
+                if (resourceCostRepository == null)
+                    resourceCostRepository = new ResourceCostRepository(db);
+                return resourceCostRepository;
+            }
+        }
+
+        public IRepository<Cost> Costs
+        {
+            get
+            {
+                if (costRepository == null)
+                    costRepository = new CostRepository(db);
+                return costRepository;
+            }
+        }
+
         public void Save()
         {
             db.SaveChanges();
@@ -36,10 +58,12 @@ namespace Concept.Dal.Repositories
 
         public void Truncate()
         {
-            db.Database.ExecuteSqlCommand("DELETE FROM [Chords]");
-            db.Database.ExecuteSqlCommand("DBCC CHECKIDENT([Chords], RESEED, 0)");
-            db.Database.ExecuteSqlCommand("DELETE FROM [Songs]");
-            db.Database.ExecuteSqlCommand("DBCC CHECKIDENT([Songs], RESEED, 0)");
+            db.Database.ExecuteSqlCommand("DELETE FROM [Resources]");
+            db.Database.ExecuteSqlCommand("DBCC CHECKIDENT([Resources], RESEED, 0)");
+            db.Database.ExecuteSqlCommand("DELETE FROM [ResourceCosts]");
+            db.Database.ExecuteSqlCommand("DBCC CHECKIDENT([ResourceCosts], RESEED, 0)");
+            db.Database.ExecuteSqlCommand("DELETE FROM [Costs]");
+            db.Database.ExecuteSqlCommand("DBCC CHECKIDENT([Costs], RESEED, 0)");
             db.SaveChanges();
         }
 

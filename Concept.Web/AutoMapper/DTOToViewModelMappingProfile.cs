@@ -13,6 +13,8 @@ namespace Concept.Web.AutoMapper
         public DTOToViewModelMappingProfile()
         {
             CreateMap<ResourceDTO, ResourceViewModel>().ReverseMap();
+            CreateMap<ResourceCostDTO, ResourceCostViewModel>().ReverseMap(); //TODO: use only ResourceViewModel
+            CreateMap<CostDTO, CostViewModel>().ReverseMap();
         }
     }
 }

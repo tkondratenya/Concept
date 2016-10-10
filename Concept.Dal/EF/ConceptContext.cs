@@ -11,6 +11,8 @@ namespace Concept.Dal.EF
     public class ConceptContext : DbContext
     {
         public DbSet<Resource> Resources { get; set; }
+        public DbSet<ResourceCost> ResourceCosts { get; set; }
+        public DbSet<Cost> Costs { get; set; }
 
         public ConceptContext(string connectionString)
                 : base(connectionString)

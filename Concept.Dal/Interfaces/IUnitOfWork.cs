@@ -10,6 +10,8 @@ namespace Concept.Dal.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Resource> Resources { get; }
+        IRepository<ResourceCost> ResourceCosts { get; }
+        IRepository<Cost> Costs { get; }
         void Save();
         void Truncate();
     }

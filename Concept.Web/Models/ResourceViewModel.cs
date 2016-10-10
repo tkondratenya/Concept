@@ -7,8 +7,10 @@ namespace Concept.Web.Models
 {
     public class ResourceViewModel
     {
-        public int Id;
-
-        public string Name;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+        public string Description { get; set; }
+        public IEnumerable<ResourceCostViewModel> ResourcesCost { get; set; }
     }
 }

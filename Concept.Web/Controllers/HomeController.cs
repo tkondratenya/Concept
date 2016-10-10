@@ -29,7 +29,7 @@ namespace Concept.Web.Controllers
 
         [HttpGet]
         public ActionResult CreateResource()
-        {         
+        {
             return View();
         }
 
@@ -42,8 +42,33 @@ namespace Concept.Web.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            var resourceDto = resourceService.GetResources().Where(r=>r.Id == 6).FirstOrDefault();
+            ResourceViewModel resource = Mapper.Map<ResourceViewModel>(resourceDto);
 
+            List<ResourceCostViewModel> lrcvm = new List<ResourceCostViewModel>();
+            for(int i = 0; i<3; i++)
+            {
+                CostViewModel cvm = new CostViewModel
+                {
+                    Gold = 3,
+                    Silver = 56,
+                    Copper = 24
+                };
+                ResourceCostViewModel rcvm = new ResourceCostViewModel
+                {
+                    Resource = resource,
+                    Cost = cvm
+                };
+                lrcvm.Add(rcvm);
+            }
+            var newResource = new ResourceViewModel
+            {
+                Name = "test1",
+                ImageUrl = "test/url",
+                Description = "Test description",
+                ResourcesCost = lrcvm
+            };
+            resourceService.AddResource(Mapper.Map<ResourceDTO>(newResource));
             return View();
         }
     }

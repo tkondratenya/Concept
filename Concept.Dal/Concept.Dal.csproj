@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="EF\ConceptContext.cs" />
     <Compile Include="EF\MigrationsContextFactory.cs" />
-    <Compile Include="Entities\Cost.cs" />
+    <Compile Include="Entities\BasicResource.cs" />
     <Compile Include="Entities\Resource.cs" />
     <Compile Include="Entities\ResourceCost.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

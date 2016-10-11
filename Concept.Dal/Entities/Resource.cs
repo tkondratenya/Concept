@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Concept.Dal.Entities
 {
-    public class Resource
+    public class Resource : BasicResource
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
-        public string Description { get; set; }
         public virtual ICollection<ResourceCost> ResourcesCost { get; set; }
     }
 }
